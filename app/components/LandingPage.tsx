@@ -63,7 +63,7 @@ export default function LandingPage() {
               y: 0,
             }}
             transition={{
-              delay: 0.5,
+              delay: 1,
               duration: 1,
             }}
             className="mb-7 border border-sky-200 bg-white/75 rounded-full px-5 py-2 backdrop-blur-md"
@@ -88,7 +88,7 @@ export default function LandingPage() {
               x: 0
             }}
             transition={{
-              delay: 0.75,
+              delay: 2.5,
               duration: 1,
             }}
             className="mx-auto mt-6 max-w-2xl text-lg md:text-xl leading-relaxed text-gray-600"
@@ -108,7 +108,7 @@ export default function LandingPage() {
                 y: 0,
               }}
               transition={{
-                delay: 5,
+                delay: 3,
                 duration: 1,
               }}
             >
