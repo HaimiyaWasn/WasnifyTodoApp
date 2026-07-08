@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const HERO_TEXT = "Organize Your Work,\n Simplify Your Life.";
+const HERO_TEXT = "Organize Your Work,\nSimplify Your Life.";
 
 export default function LandingPage() {
   const [displayText, setDisplayText] = useState("");
@@ -21,7 +21,7 @@ export default function LandingPage() {
           clearInterval(typingInterval);
         }
       }, 100);
-    }, 1500);
+    }, 250);
 
     return () => clearTimeout(startTyping);
   }, []);
@@ -63,8 +63,8 @@ export default function LandingPage() {
               y: 0,
             }}
             transition={{
-              delay: 1.5,
-              duration: 0.75,
+              delay: 0.5,
+              duration: 1,
             }}
             className="mb-7 border border-sky-200 bg-white/75 rounded-full px-5 py-2 backdrop-blur-md"
           >
@@ -80,7 +80,16 @@ export default function LandingPage() {
 
           <motion.p 
             initial={{
-              
+              opacity: 0,
+              x: -25,
+            }}
+            animate={{
+              opacity: 1,
+              x: 0
+            }}
+            transition={{
+              delay: 0.75,
+              duration: 1,
             }}
             className="mx-auto mt-6 max-w-2xl text-lg md:text-xl leading-relaxed text-gray-600"
           >
@@ -89,9 +98,24 @@ export default function LandingPage() {
           </motion.p>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <button className="rounded-full bg-sky-500 px-8 py-4 font-semibold text-white shadow-lg shadow-sky-500/30">
-              Get Started
-            </button>
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: -25,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                delay: 5,
+                duration: 1,
+              }}
+            >
+              <button className="rounded-full bg-sky-500 px-8 py-4 font-semibold text-white shadow-lg shadow-sky-500/30">
+                Get Started
+              </button>
+            </motion.div>
           </div>
         </div>
       </div>
