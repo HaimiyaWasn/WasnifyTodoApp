@@ -1,23 +1,98 @@
+"use client";
+
+import { motion } from "motion/react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+
+const HERO_TEXT = "Organize Your Work,\n Simplify Your Life.";
+
 export default function LandingPage() {
+  const [displayText, setDisplayText] = useState("");
+
+  useEffect(() => {
+    const startTyping = setTimeout(() => {
+      let index = 0;
+
+      const typingInterval = setInterval(() => {
+        setDisplayText(HERO_TEXT.slice(0, index + 1));
+        index++;
+
+        if (index === HERO_TEXT.length) {
+          clearInterval(typingInterval);
+        }
+      }, 100);
+    }, 1500);
+
+    return () => clearTimeout(startTyping);
+  }, []);
+
   return (
-    <section className="relative flex flex-col min-h-screen bg-linear-to-b from-white to-sky-300">
-      <header className="mx-auto flex w-full max-w-7xl px-8 py-6">
-        <h1 className="text-2xl font-extrabold tracking-tight text-sky-500">
-          Wasnify
-        </h1>
+    <section className="relative min-h-screen bg-linear-to-b from-white to-sky-300">
+      <header className="absolute inset-0 top-0 z-10">
+        <div className="mx-auto flex max-w-7xl items-center px-8 py-6">
+          <Link href="https://wasnportfolio.vercel.app/">
+            <motion.h1
+              initial={{
+                opacity: 0,
+                x: -50,
+              }}
+              animate={{
+                opacity: 1,
+                x: 0,
+              }}
+              transition={{
+                duration: 0.5,
+              }}
+              className="text-3xl font-extrabold tracking-tight text-sky-500"
+            >
+              Wasnify
+            </motion.h1>
+          </Link>
+        </div>
       </header>
 
-      <div className="flex flex-1 items-center justify-center">
-        <div className="mx-auto max-w-4xl px-6 text-center">
-          <h1 className="text-gray-900 font-extrabold text-4xl md:text-7xl leading-tight tracking-tight">
-            Stay Organized,
-            <br />
-            Stay Creative.
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="mx-auto flex flex-col max-w-4xl items-center px-6 text-center">
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 25,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              delay: 1.5,
+              duration: 0.75,
+            }}
+            className="mb-7 border border-sky-200 bg-white/75 rounded-full px-5 py-2 backdrop-blur-md"
+          >
+            <span className="text-sm font-medium text-sky-600">
+              ✨ Smarter task management for everyone
+            </span>
+          </motion.div>
+
+          <h1 className="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight text-gray-900">
+            {displayText}
+            <span className="animate-ping text-sky-500">|</span>
           </h1>
-          <p className="mt-4 md:mt-8 max-w-2xl text-md md:text-xl text-gray-600 leading-8">
+
+          <motion.p 
+            initial={{
+              
+            }}
+            className="mx-auto mt-6 max-w-2xl text-lg md:text-xl leading-relaxed text-gray-600"
+          >
             Join millions of people to capture ideas, organize life, and turn
             every task into meaningful progress.
-          </p>
+          </motion.p>
+
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <button className="rounded-full bg-sky-500 px-8 py-4 font-semibold text-white shadow-lg shadow-sky-500/30">
+              Get Started
+            </button>
+          </div>
         </div>
       </div>
     </section>
