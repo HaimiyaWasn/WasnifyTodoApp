@@ -52,6 +52,50 @@ export default function WasnifyTodoApp() {
               </div>
             </div>
           </aside>
+
+          <main className="rounded-3xl border border-white/30 bg-white/25 p-8 backdrop-blur-2xl shadow-2xl">
+            <div className="flex flex-col md:flex-row gap-5 md:items-center md:justify-between">
+              <div className="space-y-2">
+                <h1 className="text-4xl font-bold text-gray-800">Good ...</h1>
+                <p className="text-gray-600">Let's make today productive.</p>
+              </div>
+              <input
+                type="text"
+                placeholder="Search Task..."
+                className="w-full rounded-2xl border border-white/40 bg-white/50 px-5 py-3 outline-none transition focus:border-sky-400 md:w-80 text-black"
+              />
+            </div>
+            <div className="mt-10 space-y-4">
+              {[
+                "Design Landing Page",
+                "Finish Portfolio",
+                "Deploy Wasnify",
+                "Learn Next.js Server Actions",
+              ].map((task) => (
+                <div
+                  key={task}
+                  className="flex items-center justify-between rounded-2xl border border-white/30 bg-white/40 p-5 transition hover:scale-[1.01] hover:bg-white/60"
+                >
+                  <div className="flex items-center gap-4">
+                    <input
+                      type="checkbox"
+                      className="checkbox checkbox-primary"
+                    />
+
+                    <div>
+                      <h3 className="font-semibold text-gray-800">{task}</h3>
+
+                      <p className="text-sm text-gray-500">Today • Personal</p>
+                    </div>
+                  </div>
+
+                  <span className="rounded-full bg-sky-100 px-4 py-1 text-sm font-medium text-sky-700">
+                    High
+                  </span>
+                </div>
+              ))}
+            </div>
+          </main>
         </div>
       </div>
     </section>
