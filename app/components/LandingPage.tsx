@@ -28,7 +28,7 @@ export default function LandingPage() {
 
   return (
     <section className="relative min-h-screen bg-linear-to-b from-white to-sky-300">
-      <header className="absolute inset-0 top-0 z-10">
+      <header className="absolute inset-x-0 top-0 z-10">
         <div className="mx-auto flex max-w-7xl items-center px-8 py-6">
           <Link href="https://wasnportfolio.vercel.app/">
             <motion.h1
@@ -112,9 +112,9 @@ export default function LandingPage() {
                 duration: 1,
               }}
             >
-              <button className="rounded-full bg-sky-500 px-8 py-4 font-semibold text-white shadow-lg shadow-sky-500/30">
+              <Link href="/todoApp" className="btn rounded-full bg-sky-500 px-8 py-4 font-semibold text-white shadow-lg shadow-sky-500/30">
                 Get Started
-              </button>
+              </Link>
             </motion.div>
           </div>
         </div>
