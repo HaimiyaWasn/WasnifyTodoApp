@@ -23,7 +23,7 @@ export default function TodoApp() {
 
       <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center justify-center px-6 py-10">
         <div className="grid w-full gap-8 md:grid-cols-[380px_1fr]">
-          <StatsTodoApp />
+          <StatsTodoApp todos={todos} />
 
           <main className="rounded-3xl border border-white/30 bg-white/25 p-8 backdrop-blur-2xl shadow-2xl">
             <MainHeader />
