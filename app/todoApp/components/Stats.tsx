@@ -1,8 +1,21 @@
 import Image from "next/image";
 
+import { Todo } from "../types/Todo";
+
 import LogoWasnify from "@/public/logo/1.png";
 
-export default function StatsTodoApp() {
+interface StatsTodoAppProps {
+  todos: Todo[];
+}
+
+export default function StatsTodoApp({ todos }: StatsTodoAppProps) {
+  const completed = todos.filter((todo) => todo.completed).length;
+
+  const remaining = todos.length - completed;
+
+  const todayProgress =
+    todos.length === 0 ? 0 : Math.round((completed / todos.length) * 100);
+
   return (
     <aside className="rounded-3xl border border-white/30 bg-white/25 p-6 backdrop-blur-2xl shadow-2xl">
       <div className="flex items-center gap-3">
@@ -28,21 +41,26 @@ export default function StatsTodoApp() {
       <div className="mt-8 space-y-3">
         <div className="rounded-2xl bg-white/50 p-4">
           <p className="text-sm text-gray-500">Today's Progress</p>
-          <h2 className="mt-2 text-2xl font-bold text-gray-700">...</h2>
+          <h2 className="mt-2 text-2xl font-bold text-gray-700">
+            {todayProgress}
+          </h2>
 
           <div className="mt-4 h-2 rounded-full bg-white">
-            <div className="h-full w-2/3 rounded-full bg-sky-800" />
+            <div
+              className="h-full rounded-full bg-sky-800 transition-all duration-300"
+              style={{ width: `${todayProgress}%` }}
+            />
           </div>
         </div>
 
         <div className="rounded-2xl bg-white/40 p-4">
           <p className="text-gray-600">Completed</p>
-          <h2 className="mt-2 text-2xl font-bold text-gray-700">...</h2>
+          <h2 className="mt-2 text-2xl font-bold text-gray-700">{completed}</h2>
         </div>
 
         <div className="rounded-2xl bg-white/40 p-4">
           <p className="text-gray-600">Remaining</p>
-          <h2 className="mt-2 text-2xl font-bold text-gray-700">...</h2>
+          <h2 className="mt-2 text-2xl font-bold text-gray-700">{remaining}</h2>
         </div>
       </div>
     </aside>
