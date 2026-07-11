@@ -1,3 +1,5 @@
+import { getGreeting } from "../lib/greeting";
+
 export default function MainHeader() {
   const hour = new Date().getHours();
 
@@ -12,7 +14,7 @@ export default function MainHeader() {
   return (
     <div className="flex flex-col md:flex-row gap-5 md:items-center md:justify-between">
       <div className="space-y-2">
-        <h1 className="text-4xl font-bold text-gray-800">{greeting} 👋🏻</h1>
+        <h1 className="text-4xl font-bold text-gray-800">{getGreeting()} 👋🏻</h1>
         <p className="text-gray-600">Let's make today productive.</p>
       </div>
       <input
