@@ -9,9 +9,11 @@ import StatsTodoApp from "./components/Stats";
 import DecorationBackgroundBlur from "./components/DecorationBackgroundBlur";
 import MainHeader from "./components/MainHeader";
 import TodoList from "./components/TodoList";
+import ModalNewTask from "./components/ModalNewTask";
 
 export default function TodoApp() {
   const [todos, setTodos] = useState<Todo[]>([]);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     setTodos(getTodos());
@@ -23,7 +25,7 @@ export default function TodoApp() {
 
       <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center justify-center px-6 py-10">
         <div className="grid w-full gap-8 md:grid-cols-[380px_1fr]">
-          <StatsTodoApp todos={todos} />
+          <StatsTodoApp todos={todos} openModal={() => setShowModal(true)} />
 
           <main className="rounded-3xl border border-white/30 bg-white/25 p-8 backdrop-blur-2xl shadow-2xl">
             <MainHeader />
@@ -31,6 +33,11 @@ export default function TodoApp() {
           </main>
         </div>
       </div>
+
+      <ModalNewTask 
+        openModal={showModal}
+        closeModal={() => setShowModal(false)}
+      />
     </section>
   );
 }
