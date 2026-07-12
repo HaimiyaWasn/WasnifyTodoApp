@@ -6,9 +6,10 @@ import LogoWasnify from "@/public/logo/1.png";
 
 interface StatsTodoAppProps {
   todos: Todo[];
+  openModal: () => void;
 }
 
-export default function StatsTodoApp({ todos }: StatsTodoAppProps) {
+export default function StatsTodoApp({ todos, openModal }: StatsTodoAppProps) {
   const completed = todos.filter((todo) => todo.completed).length;
 
   const remaining = todos.length - completed;
@@ -33,7 +34,7 @@ export default function StatsTodoApp({ todos }: StatsTodoAppProps) {
       </div>
 
       <div className="mt-8">
-        <button className="w-full rounded-2xl bg-sky-500 py-3 font-medium text-white transition hover:bg-sky-600">
+        <button onClick={openModal} className="w-full rounded-2xl bg-sky-500 py-3 font-medium text-white transition hover:bg-sky-600">
           + New Task
         </button>
       </div>
