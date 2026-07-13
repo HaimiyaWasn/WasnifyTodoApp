@@ -49,32 +49,46 @@ export default function ModalNewTask({
           <h1 className="text-lg md:text-2xl font-extrabold">Add New Task</h1>
           <button
             onClick={() => closeModal()}
-            className="btn btn-circle hover:opacity-75 active:opacity-75 transition-opacity duration-300"
+            className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-gray-600 transition-all duration-200 hover:bg-gray-200 hover:text-gray-900 active:scale-95"
           >
-            <FaTimes size={20} />
+            <FaTimes size={18} />
           </button>
         </div>
 
-        <div className="space-y-5 px-6 py-5">
+        <div className="space-y-5 py-5 px-0 md:px-4">
           <div className="flex flex-col gap-2">
-            <label htmlFor="title-task" className="text-black font-bold text-base md:text-xl">Title Task</label>
+            <label
+              htmlFor="title-task"
+              className="text-black font-bold text-base md:text-xl"
+            >
+              Title Task
+            </label>
             <input
               id="title-task"
               type="text"
-              placeholder="Write your task..."
+              placeholder="e.g. Finish the project..."
               className="w-full rounded-2xl outline-none border border-gray-200 bg-white text-black px-4 py-3 transition-all duration-200 focus:border-blue-500 focus:ring-4 focus:ring-white"
             />
           </div>
           <div className="flex flex-col gap-2">
-            <label htmlFor="description-task" className="text-black font-bold text-base md:text-xl">Description Task</label>
+            <label
+              htmlFor="description-task"
+              className="text-black font-bold text-base md:text-xl"
+            >
+              Description Task
+            </label>
             <textarea
               id="description-task"
               rows={4}
               placeholder="Write your task description..."
               className="w-full resize-none rounded-2xl outline-none border border-gray-200 bg-white text-black px-4 py-3 transition-all duration-200 focus:border-blue-500 focus:ring-4 focus:ring-white"
-            ></textarea>
+            />
           </div>
         </div>
+
+        <button className="w-full bg-gray-100 text-gray-600 font-semibold px-4 py-2 my-3 rounded-xl transition-all duration-200 hover:bg-gray-200 hover:text-gray-900 active:scale-95">
+          Create Task
+        </button>
       </div>
     </div>
   );
