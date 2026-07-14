@@ -46,7 +46,12 @@ export default function ModalNewTask({
         }`}
       >
         <div className="flex items-center justify-between p-3">
-          <h1 className="text-lg md:text-2xl font-extrabold">Add New Task</h1>
+          <div className="flex flex-col gap-2">
+            <h1 className="text-lg md:text-2xl font-extrabold">Add New Task</h1>
+            <p className="text-sm opacity-75">
+              Create a new task for your project
+            </p>
+          </div>
           <button
             onClick={() => closeModal()}
             className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-gray-600 transition-all duration-200 hover:bg-gray-200 hover:text-gray-900 active:scale-95"
@@ -55,8 +60,8 @@ export default function ModalNewTask({
           </button>
         </div>
 
-        <div className="space-y-5 py-5 px-0 md:px-4">
-          <div className="flex flex-col gap-2">
+        <div className="space-y-7 py-5">
+          <div className="flex flex-col gap-3">
             <label
               htmlFor="title-task"
               className="text-black font-bold text-base md:text-xl"
@@ -70,7 +75,7 @@ export default function ModalNewTask({
               className="w-full rounded-2xl outline-none border border-gray-200 bg-white text-black px-4 py-3 transition-all duration-200 focus:border-blue-500 focus:ring-4 focus:ring-white"
             />
           </div>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-3">
             <label
               htmlFor="description-task"
               className="text-black font-bold text-base md:text-xl"
@@ -79,7 +84,7 @@ export default function ModalNewTask({
             </label>
             <textarea
               id="description-task"
-              rows={4}
+              rows={5}
               placeholder="Write your task description..."
               className="w-full resize-none rounded-2xl outline-none border border-gray-200 bg-white text-black px-4 py-3 transition-all duration-200 focus:border-blue-500 focus:ring-4 focus:ring-white"
             />

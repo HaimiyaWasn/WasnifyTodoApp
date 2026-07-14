@@ -78,14 +78,14 @@ export default function LandingPage() {
             <span className="animate-ping text-sky-500">|</span>
           </h1>
 
-          <motion.p 
+          <motion.p
             initial={{
               opacity: 0,
               x: -25,
             }}
             animate={{
               opacity: 1,
-              x: 0
+              x: 0,
             }}
             transition={{
               delay: 2.5,
@@ -112,9 +112,23 @@ export default function LandingPage() {
                 duration: 1,
               }}
             >
-              <Link href="/todoApp" className="btn rounded-full bg-sky-500 px-8 py-4 font-semibold text-white shadow-lg shadow-sky-500/30">
-                Get Started
-              </Link>
+              <motion.button
+                animate={{
+                  y: [0, 5, 0],
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                <Link
+                  href="/todoApp"
+                  className="rounded-full bg-sky-500 px-8 py-4 font-semibold text-white shadow-lg shadow-sky-500/30"
+                >
+                  Get Started
+                </Link>
+              </motion.button>
             </motion.div>
           </div>
         </div>
