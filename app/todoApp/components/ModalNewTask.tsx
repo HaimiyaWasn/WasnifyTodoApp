@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
-import { FaTimes } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { FaTimes, FaCalendarAlt } from "react-icons/fa";
 
 type ModalNewTaskProps = {
   openModal: boolean;
@@ -12,6 +12,12 @@ export default function ModalNewTask({
   openModal,
   closeModal,
 }: ModalNewTaskProps) {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [priority, setPriority] = useState("Low");
+  const [category, setCategory] = useState("Work");
+  const [dueDate, setDueDate] = useState("");
+
   useEffect(() => {
     if (openModal) {
       document.body.style.overflow = "hidden";
@@ -39,7 +45,7 @@ export default function ModalNewTask({
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className={`w-full max-w-2xl mx-5 p-5 rounded-2xl bg-sky-500 max-h-[90vh] transform transition-all duration-300  ${
+        className={`w-full max-w-2xl max-h-[90vh] mx-5 p-5 rounded-2xl overflow-y-auto bg-sky-500 transform transition-all duration-300  ${
           openModal
             ? "scale-100 opacity-100 translate-y-0"
             : "scale-95 opacity-0 translate-y-5"
@@ -71,10 +77,13 @@ export default function ModalNewTask({
             <input
               id="title-task"
               type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
               placeholder="e.g. Finish the project..."
-              className="w-full rounded-2xl outline-none border border-gray-200 bg-white text-black px-4 py-3 transition-all duration-200 focus:border-blue-500 focus:ring-4 focus:ring-white"
+              className="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-black outline-none transition-all duration-200 focus:border-blue-500 focus:ring-4 focus:ring-white"
             />
           </div>
+
           <div className="flex flex-col gap-3">
             <label
               htmlFor="description-task"
@@ -85,9 +94,77 @@ export default function ModalNewTask({
             <textarea
               id="description-task"
               rows={5}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
               placeholder="Write your task description..."
-              className="w-full resize-none rounded-2xl outline-none border border-gray-200 bg-white text-black px-4 py-3 transition-all duration-200 focus:border-blue-500 focus:ring-4 focus:ring-white"
+              className="w-full resize-none rounded-2xl border border-gray-200 bg-white px-4 py-3 text-black outline-none transition-all duration-200 focus:border-blue-500 focus:ring-4 focus:ring-white"
             />
+          </div>
+
+          <div className="grid grid-cols-1 gap-7 md:grid-cols-2">
+            <div className="flex flex-col gap-3">
+              <label
+                htmlFor="priority"
+                className="text-black font-bold text-base md:text-xl"
+              >
+                Priority
+              </label>
+
+              <select
+                id="priority"
+                value={priority}
+                onChange={(e) => setPriority(e.target.value)}
+                className="w-full appearance-none rounded-2xl border border-gray-200 bg-white px-4 py-3 text-black outline-none transition-all focus:border-blue-500 focus:ring-4 focus:ring-white"
+              >
+                <option value="Low">🟢 Low</option>
+                <option value="Medium">🟡 Medium</option>
+                <option value="High">🔴 High</option>
+              </select>
+            </div>
+
+            <div className="flex flex-col gap-3">
+              <label
+                htmlFor="due-date"
+                className="text-black font-bold text-base md:text-xl"
+              >
+                Due Date
+              </label>
+
+              <div className="relative">
+                <FaCalendarAlt
+                  className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
+                  size={18}
+                />
+
+                <input
+                  id="due-date"
+                  type="date"
+                  value={dueDate}
+                  onChange={(e) => setDueDate(e.target.value)}
+                  className="w-full rounded-2xl border border-gray-200 bg-white pl-12 pr-4 py-3 text-black outline-none transition-all duration-200 focus:border-blue-500 focus:ring-4 focus:ring-white"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <label
+              htmlFor="category"
+              className="text-black font-bold text-base md:text-xl"
+            >
+              Category
+            </label>
+
+            <select
+              id="category"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              className="w-full appearance-none rounded-2xl border border-gray-200 bg-white px-4 py-3 text-black outline-none transition-all focus:border-blue-500 focus:ring-4 focus:ring-white"
+            >
+              <option value="Work">💼 Work</option>
+              <option value="Study">📚 Study</option>
+              <option value="Personal">🏠 Personal</option>
+            </select>
           </div>
         </div>
 
